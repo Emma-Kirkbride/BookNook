@@ -1,9 +1,8 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Image, Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -29,15 +28,49 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Explore',
+          tabBarIcon: ({ color }) => (
+            <Image 
+              source={require('@/assets/images/ExploreIcon.png')} 
+              style={{ width: 28, height: 28, tintColor: color }}
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="Bookshelves"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Bookshelves',
+          tabBarIcon: ({ color }) => (
+            <Image 
+              source={require('@/assets/images/BookshelvesIcon.png')} 
+              style={{ width: 28, height: 28, tintColor: color }}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="BookWormAI"
+        options={{
+          title: 'BookWorm AI',
+          tabBarIcon: ({ color }) => (
+            <Image 
+              source={require('@/assets/images/BookWormIcon.png')} 
+              style={{ width: 25, height: 25, tintColor: color }}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Settings"
+        options={{
+          title: 'Settings',
+          tabBarIcon: ({ color }) => (
+            <Image 
+              source={require('@/assets/images/SettingsIcon.png')} 
+              style={{ width: 28, height: 28, tintColor: color }}
+            />
+          ),
         }}
       />
     </Tabs>
