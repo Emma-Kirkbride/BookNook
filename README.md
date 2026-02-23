@@ -1,50 +1,54 @@
-# Welcome to your Expo app 👋
+BookNook was built to give readers a space to manage their books in a way that feels personal and intuitive — not just a static list, but a curated experience that syncs across devices and adapts to the reader's preferences.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Tech Stack
+Frontend
 
-## Get started
+React Native with Expo (cross-platform framework)
+TypeScript (primary language)
+React Navigation, Safe Area Contexts
+Custom UI theme system via React Context API
 
-1. Install dependencies
+Backend & Database
 
-   ```bash
-   npm install
-   ```
+Firebase Authentication (email/username and password)
+Cloud Firestore (database)
+Firebase Security Rules
+Vercel (web hosting and serverless functions)
 
-2. Start the app
+APIs
 
-   ```bash
-   npx expo start
-   ```
+OpenLibrary API (book search and metadata)
+OpenAI API — GPT-4o-mini (AI reading recommendations)
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Features
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Book Search — Search millions of books via OpenLibrary, returning title, author, publication year, cover images, descriptions, excerpts, and page counts
+Bookshelves — Organize books into default shelves (Read, Currently Reading, To Be Read) or create custom shelves with names, descriptions, and color-coded organization
+Reviews — Review books on any shelf, including overall thoughts, feelings, and recommendations
+Sharing — Share individual reviews or entire shelves via email or SMS
+BookWorm AI Assistant — Receive personalized reading recommendations based on mood, favorite authors, genres, or any open-ended prompt
+Themes — Choose from 8 literary-inspired UI color schemes (Dark Academia, Fantasy Realm, Sci-Fi Neon, Classics, Romance, and more), applied in real-time via dynamic StyleSheet generation
 
-## Get a fresh project
 
-When you're ready, run:
+Database Structure
+Three main Firestore collections:
 
-```bash
-npm run reset-project
-```
+users — user ID, email, username, displayed username, theme preference
+bookshelves — user ID, name, description, color, book count
+shelf_books — user ID, bookshelf ID, book data, rating, and review fields
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Key Database Features
 
-## Learn more
+Real-time synchronization across devices
+Automatic book count tracking with incrementing functions
+Optimized Firestore indexes for simultaneous filtering and sorting queries
+Public read access on shelves enables sharing without requiring authentication
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Security & Data
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Firebase Authentication manages user sessions and access control
+Firebase Security Rules restrict read/write permissions by authenticated user
+Sensitive credentials are managed via environment variables and excluded from version control
+User preferences are stored in Firestore for cross-device persistence
